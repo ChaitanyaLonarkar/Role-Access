@@ -1,15 +1,16 @@
 import User from "../models/userModel.js";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 
 
 export const registerUser = async (req, res) => {
     const { name, email, password, role } = req.body;
 
     try {
-        if (password.length < 6)
-            return res
-              .status(400)
-              .json({ error: "Password length is greater or equal to 6" });
+        // if (password.length < 6)
+        //     return res
+        //       .status(400)
+        //       .json({ error: "Password length is greater or equal to 6" });
       
           
           const user = await User.findOne({ email });
@@ -27,15 +28,15 @@ export const registerUser = async (req, res) => {
             bcrypt.hash(password, salt, async function (err, hash) {
               const createduser = await User.create({ name, email, password: hash ,role});
       
-              let token = jwt.sign({ email }, process.env.JWT_SECRET);
+              // let token = jwt.sign({ email }, process.env.JWT_SECRET);
       
-              res.cookie("token", token, {
-                maxAge: 1 * 24 * 60 * 60 * 1000,
-                withCredentials: true,
-                httpOnly: true,
-                secure: true,
-                sameSite: "None",
-              });
+              // res.cookie("token", token, {
+              //   maxAge: 1 * 24 * 60 * 60 * 1000,
+              //   withCredentials: true,
+              //   httpOnly: true,
+              //   secure: true,
+              //   sameSite: "None",
+              // });
               // console.log("ye signup token hai ", token);
               // console.log("ye signup cookie hai", req.cookies);
               res.send({ message: "user registered successfully" });
@@ -82,8 +83,8 @@ export const loginUser = async (req, res) => {
     
         const { password, ...info } = user._doc;
     
-        // console.log("ye user hai ", user);
-        // console.log("ye login token hai ", token);
+        console.log("ye user hai ", user);
+        console.log("ye login token hai ", token);
         // console.log("ye login cookie hai", req.cookies);
         res.status(200).json({
           message: "User logged in successfully",
@@ -98,10 +99,8 @@ export const loginUser = async (req, res) => {
 
 
    export const Logout = (req, res) => {
-        // res.cookie("token", "");
         res.clearCookie("token");
-        // console.log("logogogogo",req.cookies)
-        // console.log("sdfsdfsdsdffsdfsdfsdf",req.cookies)
+        
         if (req.cookies) {
           res.json({ status: true, message: "Logout successfully.." });
         } else {

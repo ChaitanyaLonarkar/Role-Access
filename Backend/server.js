@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import connectDb from "./config/connection.js";
 import dotenv from "dotenv";
-// import authRoutes from "./routes/authRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
 // import userRoutes from "./routes/userRoutes.js";
 
 const app = express();
@@ -14,8 +14,8 @@ dotenv.config({
   path: "./.env",
 });
 
-// // API routes
-// app.use("/api/auth", authRoutes );
+// API routes
+app.use("/api/auth", authRoutes );
 // app.use("/api/user", userRoutes );
 
 
