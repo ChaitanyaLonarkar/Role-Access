@@ -1,0 +1,57 @@
+/* Navbar Container */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    
+    padding: 1.5rem 2rem;
+    color: white;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo Styling */
+.navbar-logo .logo {
+    width: 40px;
+    height: 40px;
+}
+
+/* Navbar Links */
+.navbar-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.navbar-links a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+    color: #1e90ff; /* Light blue on hover */
+}
+
+/* Sign In Button */
+.navbar-button .signin-button {
+    text-decoration: none;
+    background-color: #1e90ff; /* Light blue */
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-button .signin-button:hover {
+    background-color: #1470c4; /* Darker blue on hover */
+}
