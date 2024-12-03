@@ -8,7 +8,13 @@ import authRoutes from "./routes/authRoutes.js";
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors());
+const corsOptions = {
+  // origin: ["https://perfect-blogs.netlify.app/","http://localhost:5173/"] ,// Allow this origin
+  origin: "http://localhost:5173", // Allow this origin
+  credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+};
+
+app.use(cors(corsOptions));
 
 dotenv.config({
   path: "./.env",

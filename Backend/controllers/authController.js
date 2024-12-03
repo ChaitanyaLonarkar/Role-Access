@@ -1,7 +1,12 @@
 import User from "../models/userModel.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import express from "express"
+import cookieParser  from "cookie-parser";
 
+const app = express();
+
+app.use(cookieParser());
 
 export const registerUser = async (req, res) => {
     const { name, email, password, role } = req.body;
@@ -39,7 +44,7 @@ export const registerUser = async (req, res) => {
               // });
               // console.log("ye signup token hai ", token);
               // console.log("ye signup cookie hai", req.cookies);
-              res.send({ message: "user registered successfully" });
+              res.status(200).json({ success:true,message: `${role} registered successfully`});
             });
           });
     } catch (error) {
@@ -84,16 +89,18 @@ export const loginUser = async (req, res) => {
         const { password, ...info } = user._doc;
     
         console.log("ye user hai ", user);
+        console.log("ye info hai ", info);
         console.log("ye login token hai ", token);
         // console.log("ye login cookie hai", req.cookies);
         res.status(200).json({
-          message: "User logged in successfully",
+          message: `${user.role} login successfully`,
           success: true,
           user: info,
+          
         });
       } catch (error) {
         res.status(500).json({ success: false, error: "Internal Server Error" });
-        // console.log(error.message)
+        console.log(error.message)
       }
     };
 

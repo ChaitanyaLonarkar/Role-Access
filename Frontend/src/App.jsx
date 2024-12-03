@@ -5,6 +5,7 @@ import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Navbar from "./Components/Navbar";
 import Register from "./Pages/Register";
+import toast, { Toaster } from "react-hot-toast";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -23,6 +24,8 @@ function App() {
           </Routes>
         </div>
       </BrowserRouter>
+      <div><Toaster/></div>
+
     </>
   );
 }
