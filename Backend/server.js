@@ -4,7 +4,7 @@ import cors from "cors";
 import connectDb from "./config/connection.js";
 import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes.js";
-// import userRoutes from "./routes/userRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 const app = express();
 app.use(bodyParser.json());
@@ -22,7 +22,7 @@ dotenv.config({
 
 // API routes
 app.use("/api/auth", authRoutes );
-// app.use("/api/user", userRoutes );
+app.use("/api/user", userRoutes );
 
 
 // Start server

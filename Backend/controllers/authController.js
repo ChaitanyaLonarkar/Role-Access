@@ -103,10 +103,10 @@ export const loginUser = async (req, res) => {
         console.log(error.message)
       }
     };
-    
+
    export const Logout = (req, res) => {
         res.clearCookie("token");
-        
+        console.log("logogogogo",req.cookies)
         if (req.cookies) {
           res.json({ status: true, message: "Logout successfully.." });
         } else {

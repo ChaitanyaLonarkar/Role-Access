@@ -35,15 +35,15 @@ const Login = () => {
         localStorage.setItem("userr", JSON.stringify(response.data.user));
         setAuthUser(response.data.user);
         // Redirect or perform further actions
-        {authUser && 
-          (response.data.user.role=="Admin"?
-            navigate("/admin"):navigate("/user")
-          )
-          (response.data.user.role=="Manager"?
-            navigate("/manager"):navigate("/user")
-          )
-        }
-        navigate("/dashboard");
+        // {authUser && 
+        //   (!response.data.user.role=="Admin"?
+        //     navigate("/admin"):navigate("/user")
+        //   )
+        //   (!response.data.user.role=="Manager"?
+        //     navigate("/manager"):navigate("/user")
+        //   )
+        // }
+        navigate("/profile");
       }
     } catch (err) {
       // Set error message

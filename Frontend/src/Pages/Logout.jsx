@@ -12,11 +12,11 @@ export default function Logout() {
 
   const logout = async () => {
     setLoader(true);
-
+    // const server=process.env.SERVER;
     try {
       const response = await axios.post(
-        process.env.SERVER+ "auth/logout",
-        // "http://localhost:5000/api/auth/logout",
+        // server+ "auth/logout",
+        "http://localhost:5000/api/auth/logout",
         {},
         {
           withCredentials: true,
@@ -25,17 +25,15 @@ export default function Logout() {
       console.log(response.data);
       if (response.data.status) {
         toast.success(response.data.message);
-        // navigate("/");
         navigate("/");
-        window.location.reload(true);
-
+        // window.location.reload(true);
         localStorage.clear();
       } else {
         toast.success(response.data.message);
       }
     } catch (error) {
       const errorMessage = error.response?.data?.error || "An error occurred";
-      toast.error(errorMessage);
+      toast.error(error.message);
     } finally {
       setLoader(false);
     }
@@ -58,3 +56,6 @@ export default function Logout() {
     </>
   );
 }
+
+
+// logout kaam nhi kar rha hai

@@ -69,11 +69,11 @@ const Navbar = () => {
           <>
             {authUser.role === "Admin" && (
               <>
-                <li>
+                {/* <li>
                   <Link to="/admin/profile">Admin Profile</Link>
-                </li>
+                </li> */}
                 <li>
-                  <Link to="/admin/manage-users">Manage Users</Link>
+                  <Link to="/admin/manage-users">Manage Users</Link>s
                 </li>
               </>
             )}
