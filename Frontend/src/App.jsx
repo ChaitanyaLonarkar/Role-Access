@@ -6,9 +6,11 @@ import Login from "./Pages/Login";
 import Navbar from "./Components/Navbar";
 import Register from "./Pages/Register";
 import toast, { Toaster } from "react-hot-toast";
+import Admin from "./Pages/Admin";
+import Manager from "./Pages/Manager";
+import User from "./Pages/User";
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
     <>
@@ -19,7 +21,9 @@ function App() {
             <Route index element={<Home />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
-            {/* <Route path="*" element={<NoPage />} /> */}
+            <Route path="admin" element={<Admin />} />
+            <Route path="manager" element={<Manager />} />
+            <Route path="user" element={<User/>} />
             
           </Routes>
         </div>

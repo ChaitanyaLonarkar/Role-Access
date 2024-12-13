@@ -3,12 +3,15 @@ import axios from "axios";
 import "./Login.css";
 import toast, { Toaster } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuthContext } from "../Context/AuthContext";
 
 const Login = () => {
   // State for form inputs and error/success messages
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [authUser, setAuthUser] = useState("");
+  // const [authUser, setAuthUser] = useState("");
+  const { authUser,setAuthUser } = useAuthContext();
+  // console.log("dsdfsdfsdf",authUser)
   // const [success, setSuccess] = useState("");
   const navigate = useNavigate();
   // Login handler
@@ -32,6 +35,14 @@ const Login = () => {
         localStorage.setItem("userr", JSON.stringify(response.data.user));
         setAuthUser(response.data.user);
         // Redirect or perform further actions
+        {authUser && 
+          (response.data.user.role=="Admin"?
+            navigate("/admin"):navigate("/user")
+          )
+          (response.data.user.role=="Manager"?
+            navigate("/manager"):navigate("/user")
+          )
+        }
         navigate("/dashboard");
       }
     } catch (err) {

@@ -103,8 +103,7 @@ export const loginUser = async (req, res) => {
         console.log(error.message)
       }
     };
-
-
+    
    export const Logout = (req, res) => {
         res.clearCookie("token");
         
