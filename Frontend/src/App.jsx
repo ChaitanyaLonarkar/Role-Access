@@ -10,6 +10,7 @@ import Profile from "./Pages/Profile";
 import Manager from "./Pages/Manager";
 import User from "./Pages/User";
 import { useAuthContext } from "./Context/AuthContext";
+import AllUsers from "./Pages/AllUsers";
 
 
 
@@ -26,7 +27,7 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
             <Route path="Profile" element={<Profile />} />
-            {/* <Route path="manager" element={<Manager />} /> */}
+            <Route path="admin/manage-users" element={<AllUsers/>} />
             {/* <Route path="user" element={<User/>} /> */}
             
           </Routes>
