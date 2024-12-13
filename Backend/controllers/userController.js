@@ -25,7 +25,39 @@ export const getUsers = async (req, res) => {
 };
 
 // update the user
-export const updateUser = async (req, res) => {};
+export const updateUserRole = async (req, res) => {
+    try {
+        const { id } = req.params; 
+        const { role } = req.body;
+    
+        // Validate role
+        const validRoles = ["Admin", "Manager", "User"];
+        if (!validRoles.includes(role)) {
+          return res.status(400).json({ success: false, message: "Invalid role" });
+        }
+    
+        // Find and update the user
+        const user = await User.findByIdAndUpdate(
+          id,
+          { $set: role },
+          { new: true, }
+        );
+    
+        if (!user) {
+          return res.status(404).json({ success: false, message: "User not found" });
+        }
+    
+        res.status(200).json({
+          success: true,
+          message: "User role updated successfully",
+          updatedUser: user,
+        });
+      } catch (error) {
+        console.error("Error updating user role:", error);
+        res.status(500).json({ success: false, message: "Server error" });
+      }
+    
+};
 
 
 
