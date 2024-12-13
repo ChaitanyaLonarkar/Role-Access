@@ -1,41 +1,4 @@
-// import React from "react";
-// import { Link } from "react-router-dom";
-// import "./Navbar.css";
-// import { useAuthContext } from "../Context/AuthContext";
 
-// // const { authUser , setAuthUser} = useAuthContext();
-// const authUser = JSON.parse(localStorage.getItem("userr"));
-// console.log("dsdfsdfsdf",authUser)
-// const Navbar = () => {
-//   return (
-//     <nav className="navbar">
-//       <div className="navbar-logo">
-//         <img src="your-logo-url-here" alt="Logo" className="logo" />
-//       </div>
-//       <ul className="navbar-links">
-//         <li>
-//           <Link to="/about">About</Link>
-//         </li>
-//         <li>
-//           <Link to="/services">Services</Link>
-//         </li>
-//         <li>
-//           <Link to="/contact">Contact Us</Link>
-//         </li>
-//         <li>
-//           <Link to="/login">Login</Link>
-//         </li>
-//       </ul>
-//       <div className="navbar-button">
-//         <Link to="/register" className="signin-button">
-//           Register
-//         </Link>
-//       </div>
-//     </nav>
-//   );
-// };
-
-// export default Navbar;
 
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -69,9 +32,9 @@ const Navbar = () => {
           <>
             {authUser.role === "Admin" && (
               <>
-                {/* <li>
-                  <Link to="/admin/profile">Admin Profile</Link>
-                </li> */}
+                <li>
+                  <Link to="/profile">{authUser.role} Profile</Link>
+                </li>
                 <li>
                   <Link to="/admin/manage-users">Manage Users</Link>s
                 </li>
