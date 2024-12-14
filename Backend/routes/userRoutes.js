@@ -4,7 +4,7 @@ import { getUsers, deleteUser , updateUserRole } from "../controllers/userContro
 const router = express.Router();
 
 router.get("/getusers", getUsers);
-router.put("/updaterole", updateUserRole);
+router.put("/updaterole/:id", updateUserRole);
 router.delete("/deleteuser/:id", deleteUser);
 
 

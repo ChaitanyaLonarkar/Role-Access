@@ -29,7 +29,7 @@ export const updateUserRole = async (req, res) => {
     try {
         const { id } = req.params; 
         const { role } = req.body;
-    
+        // console.log("isdjf",role)
         // Validate role
         const validRoles = ["Admin", "Manager", "User"];
         if (!validRoles.includes(role)) {
@@ -39,7 +39,7 @@ export const updateUserRole = async (req, res) => {
         // Find and update the user
         const user = await User.findByIdAndUpdate(
           id,
-          { $set: role },
+          { $set: req.body },
           { new: true, }
         );
     
