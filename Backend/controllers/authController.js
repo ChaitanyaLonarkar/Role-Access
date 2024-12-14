@@ -81,7 +81,7 @@ export const loginUser = async (req, res) => {
         res.cookie("token", token, {
           maxAge: 10 * 24 * 60 * 60 * 1000,
           withCredentials: true,
-          httpOnly: true,
+          httpOnly: false,
           secure: true,
           sameSite: "None",
         });
@@ -105,10 +105,10 @@ export const loginUser = async (req, res) => {
     };
 
    export const Logout = (req, res) => {
-        res.clearCookie("token");
-        console.log("logogogogo",req.cookies)
-        if (req.cookies) {
-          res.json({ status: true, message: "Logout successfully.." });
+     console.log("logogogogo",req.cookies)
+     if (req.cookies) {
+       res.json({ status: true, message: "Logout successfully.." });
+       res.clearCookie("token");
         } else {
           res.json({ status: false, message: "Connot Logout.." });
         }

@@ -9,7 +9,6 @@ import userRoutes from "./routes/userRoutes.js";
 const app = express();
 app.use(bodyParser.json());
 const corsOptions = {
-  // origin: ["https://perfect-blogs.netlify.app/","http://localhost:5173/"] ,// Allow this origin
   origin: "http://localhost:5173", // Allow this origin
   credentials: true, // Allow credentials (cookies, authorization headers, etc.)
 };
